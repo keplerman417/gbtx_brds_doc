@@ -152,4 +152,19 @@ Tested:
     \item Bullseye pins (TP2)
 \end{enumerate}
 
-\subsubsection{E-LINKS}
+\subsubsection{SCA Test}
+
+Connect ports J32 to J33 using a mini HDMI to mini HDMI cable
+Adjust switch positions on SW1, SW2, and SW3 to the following:
+\being{enumerate}
+    \item SW1: Change address to 0001 (SW1[5:8])
+    \item SW2: RXLOCKMODE<1> is 0 (SW2[5])
+    \item SW3: AUX LINKS DIS is 0, AUX I2C EN is 0, GPIO<2> is 0 (SW3[1:3])
+\end{enumerate}
+
+Connect the oscilloscope probe to the SDA and SCL pins (either slave or master board)
+
+Program the GBTx with the txt file "master.txt". This file will configre the EC
+link to 40 MHz and 80 Mbps
+
+Enable all SCA blocks using SCA address. Enable the GPIOs as output. Put 0xFF, LD7 and LD8 should be ON.
